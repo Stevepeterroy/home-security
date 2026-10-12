@@ -1,6 +1,7 @@
+import { resolveUrl } from "./serverConfig";
 async function request(path: string, body?: unknown) {
   const response = await fetch(
-    path,
+    resolveUrl(path),
     body === undefined
       ? undefined
       : {

@@ -1,4 +1,5 @@
 import EmailSetup from "./EmailSetup";
+import { resolveUrl } from "./serverConfig";
 import { roomPath } from "./roomBoundary";
 import { lazy, Suspense, useEffect, useMemo, useRef, useState } from "react";
 import {
@@ -84,7 +85,7 @@ const number = (value: FormDataEntryValue | null, fallback = 0) =>
   Number(value ?? fallback);
 async function api(path: string, body?: unknown) {
   const r = await fetch(
-    path,
+    resolveUrl(path),
     body === undefined
       ? {}
       : {

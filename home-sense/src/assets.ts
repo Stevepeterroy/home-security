@@ -1,3 +1,4 @@
+import { resolveUrl } from "./serverConfig";
 export type AssetFile = { name: string; data: ArrayBuffer };
 export type ModelAsset = {
   id: string;
@@ -68,7 +69,7 @@ export async function saveSharedModel(a: ModelAsset) {
   if (!a.files.length && a.remoteFiles) {
     const prepared = await (
       await response(
-        await fetch("/api/models", {
+        await fetch(resolveUrl("/api/models"), {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({ ...a, files: a.remoteFiles }),
@@ -90,7 +91,7 @@ export async function saveSharedModel(a: ModelAsset) {
   );
   const prepared = await (
     await response(
-      await fetch("/api/models", {
+      await fetch(resolveUrl("/api/models"), {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
@@ -107,7 +108,7 @@ export async function saveSharedModel(a: ModelAsset) {
   ).json();
   for (const index of prepared.missing as number[])
     await response(
-      await fetch(`/api/models/${encodeURIComponent(a.id)}/file/${index}`, {
+      await fetch(resolveUrl(`/api/models/${encodeURIComponent(a.id)}/file/${index}`), {
         method: "POST",
         body: a.files[index].data,
       }),
@@ -117,7 +118,7 @@ export async function saveSharedModel(a: ModelAsset) {
 export async function listSharedModels(): Promise<ModelAsset[]> {
   type Manifest = Omit<ModelAsset, "files"> & { files: RemoteFile[] };
   const metadata: Manifest[] = await (
-    await response(await fetch("/api/models"))
+    await response(await fetch(resolveUrl("/api/models")))
   ).json();
   const local = await listModels();
   for (const old of local) {
@@ -141,7 +142,7 @@ export async function hydrateModel(a: ModelAsset): Promise<ModelAsset> {
     a.remoteFiles.map(async (f, index) => {
       const data = await (
         await response(
-          await fetch(`/api/models/${encodeURIComponent(a.id)}/file/${index}`),
+          await fetch(resolveUrl(`/api/models/${encodeURIComponent(a.id)}/file/${index}`)),
         )
       ).arrayBuffer();
       if (data.byteLength !== f.size || (await digest(data)) !== f.sha256)

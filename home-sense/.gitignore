@@ -37,3 +37,9 @@ firmware/**/secrets.h
 
 # ── Logs ─────────────────────────────────────────────────────────────────────
 *.log
+
+# ── Android build outputs ────────────────────────────────────────────────────
+android/app/build/
+android/.gradle/
+android/build/
+android/capacitor-cordova-android-plugins/build/
