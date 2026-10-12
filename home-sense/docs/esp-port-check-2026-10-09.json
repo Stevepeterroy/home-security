@@ -1,0 +1,19 @@
+{
+  "port": "/dev/cu.usbserial-11320",
+  "baud": 115200,
+  "dtr": false,
+  "rts": false,
+  "reset_performed": false,
+  "results": [
+    {
+      "command": null,
+      "bytes": 0,
+      "output": ""
+    },
+    {
+      "command": "INFO",
+      "bytes": 0,
+      "output": ""
+    }
+  ]
+}

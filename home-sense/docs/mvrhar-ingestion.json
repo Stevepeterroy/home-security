@@ -1,0 +1,42 @@
+{
+  "archive_sha256": "6139d34e40a077d5835b13bfa9427cb300999219b05e41134a9b7c05d636c4db",
+  "archive_bytes": 86333603,
+  "csv_files": 181,
+  "sample_file": "arm_raise-00-00-000.csv",
+  "header": [
+    "frame_idx",
+    "x",
+    "y",
+    "z",
+    "doppler",
+    "snr",
+    "group"
+  ],
+  "sample": [
+    [
+      "0",
+      "-0.7329453067269386",
+      "2.5488934033838153",
+      "-0.13271968733808928",
+      "0.27832000743364915",
+      "58.999998681247234",
+      "14.0"
+    ],
+    [
+      "0",
+      "-0.750402957131939",
+      "2.609604195236207",
+      "-0.13588086987400877",
+      "0.27832000743364915",
+      "46.35999896377325",
+      "14.0"
+    ]
+  ],
+  "license": "CC BY-NC-SA 4.0",
+  "source": "https://github.com/Tianshi-Dai/MVRHAR",
+  "trained": true,
+  "training_scope": "Source-domain only; no validated RD-60 activity model",
+  "initial_baseline_report": "data/training/mvrhar/source-baseline-results.json",
+  "participant_sparsity_study_report": "data/training/mvrhar/participant-sparsity-study/results.json",
+  "participant_sparsity_study_verified_at": "2026-10-10T16:06:32.866232+00:00"
+}

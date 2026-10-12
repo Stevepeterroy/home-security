@@ -1,0 +1,13 @@
+{
+  "reports": 100,
+  "nonempty_reports": 17,
+  "reported_points": 24,
+  "visible_points": 24,
+  "incomplete_reports": 0,
+  "data_bytes": 0,
+  "stop_acknowledged": true,
+  "port": "/dev/cu.usbmodem5C830803991",
+  "version": "V4.130.4.2",
+  "capture": "data/captures/20261009T164752Z-preview.json",
+  "human_labels": false
+}

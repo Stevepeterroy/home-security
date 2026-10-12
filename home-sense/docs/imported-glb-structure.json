@@ -1,0 +1,27 @@
+{
+  "glb_version": 2,
+  "length_matches": true,
+  "meshes": 1,
+  "nodes": [
+    {
+      "mesh": 0
+    }
+  ],
+  "positions": [
+    {
+      "count": 56288,
+      "min": [
+        -1.6641288995742798,
+        0.0,
+        -2.153550386428833
+      ],
+      "max": [
+        1.6641288995742798,
+        1.686529517173767,
+        2.153550386428833
+      ]
+    }
+  ],
+  "external_resource_uris": [],
+  "note": "Accessor bounds are local geometry bounds; node transforms and calibration must be applied before interpreting world dimensions."
+}

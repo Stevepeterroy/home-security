@@ -1,0 +1,23 @@
+{
+  "/api/models": {
+    "status": 200,
+    "type": "list",
+    "model_count": 0
+  },
+  "/api/auth/status": {
+    "status": 200,
+    "type": "dict"
+  },
+  "/api/state": {
+    "status": 200,
+    "type": "dict"
+  },
+  "verification": {
+    "service_tests": 23,
+    "frontend_tests": 11,
+    "production_build": "passed",
+    "dependency_audit": "zero vulnerabilities",
+    "rendered_ui": "unverified; browser permission denied",
+    "real_house_scan": "not supplied"
+  }
+}

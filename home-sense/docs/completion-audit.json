@@ -1,0 +1,448 @@
+{
+  "checked_at": "2026-10-12T00:01:56.786062+00:00",
+  "objective_sha256": "d303b6eea592337198517fd99ec04800e14e1c84f3f07306247aed50b92ae34f",
+  "overall": "incomplete",
+  "live_snapshot": {
+    "models": [
+      {
+        "id": "a624d59f-f8d7-4853-97e3-2aa5dcb54a35",
+        "name": "10_10_2026.glb",
+        "created": "2026-10-10T00:22:10.159Z",
+        "scale": 1,
+        "files": [
+          {
+            "name": "10_10_2026.glb",
+            "size": 5842296,
+            "sha256": "1e170cf605bb30516bdf701a645d440c11aaf09db67a557aa51ec265b8b4e7e3"
+          }
+        ],
+        "upAxis": "Y",
+        "yaw": 0,
+        "missing": [],
+        "ready": true
+      }
+    ],
+    "capabilities": {
+      "polycam_api_configured": false,
+      "google_calendar_configured": false,
+      "google_tasks_configured": false,
+      "point_cloud": "partial console previews",
+      "human_count": false,
+      "activity_classifier": false,
+      "vitals": false,
+      "fall_detection": false,
+      "csi": false,
+      "listen": "127.0.0.1",
+      "wifi_transport": true,
+      "wifi_hardware_verified": false
+    },
+    "auth/status": {
+      "enrolled": false,
+      "authenticated": false,
+      "remote": false
+    },
+    "push/status": {
+      "configured": false,
+      "enrolled": false,
+      "publicKey": null,
+      "devices": 0,
+      "states": {}
+    },
+    "radar_connection": {
+      "connected": true,
+      "transport": "wifi",
+      "version": "V4.130.4.2",
+      "radar_verified": true,
+      "scan_running": false,
+      "stop_acknowledged": true
+    }
+  },
+  "requirements": [
+    {
+      "requirement": "Scanned house layout, all rooms and calibrated placement",
+      "status": "scan_imported_calibration_unverified",
+      "evidence": "Actual 10_10_2026.glb geometry measured as 3.3283 \u00d7 4.3071 m at saved scale. Dashboard now fits scan geometry, responds to scale/axis/yaw changes and excludes unrelated room labels; 24 frontend tests/build pass and new assets are served. Evidence: evidence/adaptive-glb-layout-20261010.json. Actual full-house boundaries, physical calibration and rendered/device verification remain unverified. Placement now resolves taps against active GLB bounds/rooms, creates a measured neutral space when no labels exist, ties modules to scan/alignment and excludes unrelated readings/markers. Named room regions replace the neutral envelope. Actual GLB placement calculations passed without changing saved user positions. Six new frontend checks (total 30), backend total 63 and 12 training checks pass; build served. Evidence: evidence/glb-placement-geometry-20261010.json. Rendered tapping and physical calibration remain unverified."
+    },
+    {
+      "requirement": "Realtime human count, activities, movement and paper-based recognition",
+      "status": "incomplete",
+      "evidence": "Runtime activity/human-count capabilities remain false. Source participant-held-out RF evaluation now exists, including sparse/rate-reduced variants; target RD-60 validation and live classifier remain unavailable. Reflections are not identified people."
+    },
+    {
+      "requirement": "Hover/hold, click-to-3D and phone dashboard",
+      "status": "unverified",
+      "evidence": "Gesture/projection/geometry unit checks exist; rendered WebGL and phone interaction checks are prevented by prior browser permission denial. Room spatial views now distinguish shared-home geometry from separate room scans, use explicit room origin only for separate scans, limit sensor/group overlays to the selected room, use mounting height in 3D and preserve separate trail runs across room excursions. Six new checks bring frontend total to 36; build and actual shared-GLB geometry check pass and assets are served. Evidence: evidence/room-spatial-geometry-20261010.json. Rendered/device behavior remains unverified."
+    },
+    {
+      "requirement": "Live ESP acquisition on specified port",
+      "status": "partial_live_acquisition_verified",
+      "evidence": "User-selected native USB /dev/cu.usbmodem5C830803991 verified V4.130.4.2; finite scan returned 100 timestamped console reports and acknowledged stop. GPIO21 data_bytes=0; complete binary point-cloud acquisition remains unresolved. Evidence: docs/live-acquisition-2026-10-09.json and referenced capture. Latest finite scan: 100 reports, 50 visible coordinates matching console counts, ordered receipt times spanning 19.83 seconds, max gap 0.211 seconds, acknowledged stop; raw GPIO21 bytes still zero. Capture remains unlabelled. Evidence: evidence/live-preview-target-check-20261010.json.",
+      "current_availability": "Connected and radar verified, USB transport; scan stopped and acknowledged. Current retained scan has 100 reports, 228 visible coordinates, 440 reported points. No new scan started. See evidence/current-runtime-audit.json."
+    },
+    {
+      "requirement": "Away notifications and stationary care measurements",
+      "status": "incomplete",
+      "evidence": "Live motion review and Web Push code exist, but zero subscribed devices and delivery unconfigured. Fall/vital capabilities false; no validated supporting acquisition.",
+      "user_deferral": "Phone-alert setup deferred until requested; existing sensing/other requirements retain their own status."
+    },
+    {
+      "requirement": "First-use sign-in, additional modules and spaces",
+      "status": "implemented_but_unverified_end_to_end",
+      "evidence": "Auth, module registry, room/model storage and placement code/API tests exist. No production account enrolled or real phone sign-in/scan workflow verified."
+    },
+    {
+      "requirement": "Calendar/Tasks reminders, repeated alerts and verified cancellation",
+      "status": "excluded_by_later_user_instruction",
+      "evidence": "User removed Trial safeguards and excluded Calendar/Tasks. Phone alert setup separately deferred.",
+      "user_deferral": "Phone-alert setup deferred until requested; existing sensing/other requirements retain their own status."
+    },
+    {
+      "requirement": "Antigravity with model fallback",
+      "status": "not_fulfilled",
+      "evidence": "Earlier native-app permission denial prevents Antigravity control. Development was performed directly; no Antigravity/model switch is claimed."
+    },
+    {
+      "requirement": "Architecture/schema, FRD and user guide",
+      "status": "artifacts_present",
+      "evidence": "docs/ARCHITECTURE.md, REQUIREMENTS.md, ALGORITHMS.md, INTEGRATIONS.md, USER-GUIDE.md and executable sources present; these do not prove the operational sensing requirements."
+    },
+    {
+      "requirement": "Each ESP/radar pair joins home Wi-Fi and delivers data over the internet to laptop/phone",
+      "status": "one_pair_home_wifi_verified_internet_phone_and_recovery_unverified",
+      "evidence": "Actual configured ESP32-S3 uploaded on ROY HOME and connected over certificate-verified HTTPS to laptop 192.168.1.15:8769. Radar version verified; 100 reports, 192 visible coordinates, 353 reported points; stop acknowledged. See evidence/home-wifi-hardware-test.json. Internet/phone access, all pairs and physical loss/recovery not verified."
+    },
+    {
+      "requirement": "Research compatible datasets and train a sensing model",
+      "status": "source_models_trained_and_verified_target_validation_incomplete",
+      "evidence": "Initial MVRHAR baseline plus nine participant-held-out source RF models trained. Mean fold balanced accuracy: native 0.7551, 5 Hz 0.7392, 5 Hz/random four points 0.6917. Saved models/predictions/confusion matrices independently reproduced and hashes checked. Five training checks pass. Provenance: data/training/mvrhar/participant-sparsity-study and evidence/source-study-verification-20261010.json. Target RD-60 labels, validation and deployed inference remain missing. Durable target-session save/review and dataset-export APIs now implemented and fixture-tested, with immutable readings, duplicate refusal, timing checks and append-only operator reviews. Production session library remains empty. Target preview preparation and explicit participant-held-out training workflow now implemented, with 7 synthetic target checks passing plus 5 source regression checks. Actual empty library refuses training; no real RD-60 model fitted or enabled. Evidence: evidence/target-training-workflow-20261010.json."
+    }
+  ],
+  "next_dependencies": [
+    "Resolve complete radar data acquisition and collect controlled labelled sessions; native USB console previews now work.",
+    "Calibrate the imported house scan and collect controlled labelled sensing sessions.",
+    "Permit rendered browser/device verification and configure actual account/TLS for ESP transport; phone alerts deferred.",
+    "Commission each ESP using real Wi-Fi settings, per-module pairing and a reachable authenticated HTTPS Haven deployment; verify real-device wireless loss/recovery and phone access."
+  ],
+  "completion_decision": "Do not mark complete. Implementation and fixture checks make progress, but full operational sensing, wireless deployment, phone notifications and rendered/device verification remain incomplete. Do not substitute fabricated credentials, labels or success claims.",
+  "user_deferrals": {
+    "phone_alert_setup": {
+      "date": "2026-10-10",
+      "status": "deferred_by_user",
+      "instruction": "Skip phone-alert setup for now; do it later. Do not block current app/sensor work on push deployment, phone permission or delivery tests."
+    }
+  },
+  "activity_recording_workflow": {
+    "evidence": "evidence/activity-session-workflow-20261010.json",
+    "implemented": true,
+    "real_labelled_sessions_acquired": false,
+    "live_classifier_enabled": false,
+    "browser_verified": false
+  },
+  "target_training_workflow": {
+    "evidence": "evidence/target-training-workflow-20261010.json",
+    "implemented": true,
+    "real_target_model_trained": false,
+    "live_classifier_enabled": false
+  },
+  "scan_placement_workflow": {
+    "implemented": true,
+    "actual_geometry_checked": true,
+    "physical_installation_assumed": false,
+    "browser_verified": false,
+    "evidence": "evidence/glb-placement-geometry-20261010.json"
+  },
+  "room_spatial_workflow": {
+    "implemented": true,
+    "frontend_checks": 36,
+    "actual_shared_glb_checked": true,
+    "rendered_browser_verified": false,
+    "evidence": "evidence/room-spatial-geometry-20261010.json",
+    "polygon_floor_and_outline_implemented": true
+  },
+  "current_usb_availability": {
+    "checked_at": "2026-10-11T17:24:58.964922+00:00",
+    "available_usb_ports": [
+      "/dev/cu.usbmodem5C830803991",
+      "/dev/cu.usbserial-1320"
+    ],
+    "selected_port_present": true,
+    "commands_sent": false
+  },
+  "recording_coverage_workflow": {
+    "checked_at": "2026-10-11T16:09:24.320760+00:00",
+    "ports": [
+      "/dev/cu.debug-console",
+      "/dev/cu.Airdopes141",
+      "/dev/cu.Bluetooth-Incoming-Port",
+      "/dev/cu.usbmodem5C831044461"
+    ],
+    "selected_port_present": false,
+    "sessions": 0,
+    "frontend_tests": 41,
+    "build_passed": true,
+    "updated_bundle_served": true,
+    "render_verified": false,
+    "real_target_model_trained": false,
+    "live_classifier_enabled": false
+  },
+  "scan_lighting_fix": {
+    "missing_normals_repaired": true,
+    "actual_glb_vertices_checked": 56288,
+    "all_normals_finite_and_nonzero": true,
+    "render_verified": false,
+    "evidence": "evidence/scan-lighting-20261011.json"
+  },
+  "new_usb_probe": {
+    "port": "/dev/cu.usbmodem5C831044461",
+    "esp_identified": true,
+    "firmware": "RD60_CAPTURE_GPIO21 v1",
+    "radar_version_reply": false,
+    "control_bytes": 12,
+    "data_bytes": 0,
+    "commands_sent": [
+      "mmwc version"
+    ],
+    "scan_started": false,
+    "physical_pair_identity_unconfirmed": true,
+    "evidence": [
+      "evidence/new-usb-passive-20261011.json",
+      "evidence/new-usb-version-20261011.json"
+    ],
+    "latest_evidence": "evidence/hardware-recheck-20261011.json",
+    "interpretation": "ESP command echo and 12 control bytes observed, but no readable radar version; connection unverified. No scan or labelled recording collected."
+  },
+  "blocked_audit": {
+    "current_impasse": false,
+    "historical_audit_superseded_by": "evidence/current-module-reconnection.json",
+    "interpretation": "Radar control and console preview acquisition recovered. Previous bootloop/absent-port blocker is historical; wireless commissioning and target labels remain missing."
+  },
+  "radar_startup_followup": {
+    "evidence": "evidence/passive-radar-startup-20261011.json",
+    "commands_sent": false,
+    "observation_seconds": 14,
+    "radar_sdk_banners": 4,
+    "esp_boot_banners": 1,
+    "data_bytes": 0,
+    "interpretation": "Repeated radar startup/reinitialization strongly suggested; exact reset cause not measured. Boot SDK banner is not application-version verification.",
+    "next_external_check": "Radar power/3.3V stability and reset signal, then firmware support if stable. Do not blame soldering or flash unsupported firmware."
+  },
+  "polygon_room_followup": {
+    "implemented": true,
+    "backend_tests_passed": 66,
+    "frontend_tests_passed": 49,
+    "boundary_validation": true,
+    "away_reflections_filtered_by_polygon": true,
+    "live_verified": false,
+    "phone_alerts_deferred": true
+  },
+  "wifi_setup_workflow": {
+    "sign_in_action_in_sensors": true,
+    "venue_portal_login_implemented": false,
+    "hardware_upload_verified": true,
+    "network_and_https_settings_required": true
+  },
+  "home_wifi_hardware_test": {
+    "connected": true,
+    "transport": "wifi",
+    "version": "V4.130.4.2",
+    "radar_verified": true,
+    "scan_running": false,
+    "stop_acknowledged": true,
+    "scan_error": null,
+    "message": "Scan stopped; radar acknowledged.",
+    "status": {
+      "ms": 76534,
+      "control_bytes": 12229,
+      "data_bytes": 0,
+      "fifo_overflow": 0,
+      "buffer_full": 0,
+      "frame_error": 0,
+      "parity_error": 0,
+      "breaks": 0,
+      "read_error": 0,
+      "control_errors": 0,
+      "version_verified": 1
+    },
+    "reports": 100,
+    "visible_coordinates": 192,
+    "reported_points": 353,
+    "label": "unlabelled",
+    "firmware_uploaded": true
+  },
+  "current_snapshot": {
+    "home": {
+      "profile": "steve",
+      "homeName": "My home",
+      "away": false,
+      "events": [],
+      "trials": [],
+      "rooms": [
+        {
+          "x": 0.02448878064751625,
+          "z": 0.1095244437456131,
+          "width": 1.6440764926373959,
+          "depth": 1.817137286067009,
+          "boundary": [
+            {
+              "x": 0.02448878064751625,
+              "z": 1.126255989074707
+            },
+            {
+              "x": 0.933057427406311,
+              "z": 0.1095244437456131
+            },
+            {
+              "x": 1.668565273284912,
+              "z": 0.6719716787338257
+            },
+            {
+              "x": 0.8573433756828308,
+              "z": 1.926661729812622
+            }
+          ],
+          "id": "69b740c2-f815-483e-945a-b8c237e2e0eb",
+          "name": "dinning hall",
+          "care": false,
+          "modelId": "a624d59f-f8d7-4853-97e3-2aa5dcb54a35",
+          "planModelId": "a624d59f-f8d7-4853-97e3-2aa5dcb54a35",
+          "scanEnvelope": false
+        }
+      ],
+      "modules": [
+        {
+          "id": "0fcab4bc-92b7-40ef-aecd-718ae62e4d31",
+          "name": "radar",
+          "roomId": "",
+          "x": 2.38,
+          "z": 3.11,
+          "height": 1.2,
+          "yaw": 230,
+          "port": "/dev/cu.usbmodem5C830803991",
+          "planModelId": "a624d59f-f8d7-4853-97e3-2aa5dcb54a35",
+          "scanAlignment": {
+            "scale": 1,
+            "upAxis": "Y",
+            "yaw": 0
+          }
+        }
+      ],
+      "dataSource": "live",
+      "homeModelId": "a624d59f-f8d7-4853-97e3-2aa5dcb54a35"
+    },
+    "models": [
+      {
+        "id": "a624d59f-f8d7-4853-97e3-2aa5dcb54a35",
+        "name": "10_10_2026.glb",
+        "created": "2026-10-10T00:22:10.159Z",
+        "scale": 1,
+        "files": [
+          {
+            "name": "10_10_2026.glb",
+            "size": 5842296,
+            "sha256": "1e170cf605bb30516bdf701a645d440c11aaf09db67a557aa51ec265b8b4e7e3"
+          }
+        ],
+        "upAxis": "Y",
+        "yaw": 0,
+        "missing": [],
+        "ready": true
+      }
+    ],
+    "capabilities": {
+      "polycam_api_configured": false,
+      "google_calendar_configured": false,
+      "google_tasks_configured": false,
+      "point_cloud": "partial console previews",
+      "human_count": false,
+      "activity_classifier": false,
+      "vitals": false,
+      "fall_detection": false,
+      "csi": true,
+      "csi_activity_classifier": false,
+      "trained_fusion": false,
+      "listen": "127.0.0.1",
+      "wifi_transport": true,
+      "wifi_hardware_verified": true
+    },
+    "dataset/sessions": [],
+    "state": {
+      "connected": true,
+      "transport": "wifi",
+      "radar_verified": true,
+      "csi": {
+        "connected": true,
+        "samples": 1748,
+        "retained": 1748,
+        "dropped": 2,
+        "rssi": -71,
+        "channel": 5,
+        "approx_rate": 16.563162373998612,
+        "detection_enabled": false,
+        "motion": {
+          "status": "needs_calibration",
+          "enabled": false
+        }
+      },
+      "activityEstimate": {
+        "enabled": false,
+        "status": "not_configured",
+        "reason": null
+      }
+    }
+  },
+  "remaining_completion_gates": [
+    {
+      "requirement": "Reviewed target activity recordings and trained live detection",
+      "status": "missing",
+      "evidence": "Live /api/dataset/sessions is empty; saved motion capture remains unlabelled; /api/state activityEstimate is not_configured",
+      "needed": "Actual operator activity labels, participant identities and reviewed sessions spanning classes and held-out participants"
+    },
+    {
+      "requirement": "Fusion improves accuracy on actual hardware",
+      "status": "unverified",
+      "evidence": "Rule agreement was observed at two checks; independent source datasets are not paired; no real target fusion model exists",
+      "needed": "Paired reviewed target sessions and modality comparisons on held-out people/pairs"
+    },
+    {
+      "requirement": "People count and per-person activities",
+      "status": "unverified",
+      "evidence": "Capabilities remain false; current grouping is reflection clustering, not validated human identity/count",
+      "needed": "Ground-truth participant counts and sessions across relevant placements/rooms"
+    },
+    {
+      "requirement": "Physical room mapping and calibrated 3D movement",
+      "status": "partial",
+      "evidence": "One named polygon is saved; model is ready; radar placement lies outside that polygon and has no assigned room; model scale is not physically verified",
+      "needed": "Remaining room boundaries, room labels and actual mounting/scale confirmation"
+    },
+    {
+      "requirement": "Fall and vital-sign care functions",
+      "status": "unavailable",
+      "evidence": "No validated target fall model or supported vital-sign acquisition path; capability flags remain false",
+      "needed": "Suitable ground truth and supported sensor signal for requested measurements"
+    },
+    {
+      "requirement": "Phone/internet access and rendered mobile verification",
+      "status": "unverified",
+      "evidence": "Device-only LAN HTTPS verified; workspace browser listener remains loopback; no actual phone validation",
+      "needed": "Authorized secure remote configuration and actual phone/rendered verification; phone notifications deferred by user"
+    },
+    {
+      "requirement": "Calendar/tasks/trial safeguards",
+      "status": "removed_by_user",
+      "evidence": "Later user instructions removed trial safeguards and declined calendar/tasks integration",
+      "needed": null
+    }
+  ],
+  "csi_progress": {
+    "source_training": "ESP-Fi HAR: 2240 trials; held-out balanced accuracy .3625; not target validated",
+    "source_result": "data/training/csi-source/evaluation.json",
+    "target_pipeline": "Paired recording/review, participant splits, per-modality evaluation, numeric forest runtime and live feature parity implemented",
+    "motion_evidence": "evidence/csi-radar-motion-comparison-20261012.json",
+    "recovery_evidence": "evidence/csi-automatic-recovery-test.json",
+    "live_feature_parity": "evidence/live-feature-real-capture-check.json",
+    "production_model_check": "evidence/activity-runtime-production-check.json",
+    "backend_checks": "evidence/activity-runtime-backend-checks.log",
+    "runtime_checks": "evidence/activity-runtime-integration-checks.log"
+  }
+}
